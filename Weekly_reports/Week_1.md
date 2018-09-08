@@ -1,10 +1,12 @@
 # Week 1
 
-## Challenges
-My familiarity with neural networks has saved me from some reading, but I foresee problems implementing them in Java. I am not familiar with JUnit and JavaDoc either.
+## Challenges and learnings
+My previous experience with machine learning has saved me from some reading, but I foresee problems implementing them in Java. I am not familiar with JUnit and JavaDoc either.
+
+I learned how to calculate neural network's training and inference times.
 
 ## Time track
-Around 3 hours.
+Around 3.5 hours.
 
 ## Goals for next week
 * Implement data loader
