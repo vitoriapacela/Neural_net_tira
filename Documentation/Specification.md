@@ -1,4 +1,4 @@
-# Week 1
+# Specification
 
 ## Brief description of the project
 In this project I aim to implement artifical neural networks to identify handwritten digits from the [MNIST](http://yann.lecun.com/exdb/mnist/) dataset.
