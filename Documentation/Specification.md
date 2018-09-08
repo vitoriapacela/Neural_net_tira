@@ -14,8 +14,13 @@ I don't know yet if I will use all of them in my project due to limitations in p
 2. [LeCun et al., "A Theoretical Framework for Back-Propagation", 1988](http://yann.lecun.com/exdb/publis/pdf/lecun-88.pdf)
 
 ## Models
-I aim to train two models: a linear classifier (1-layer NN), and a 2-layer NN with 300 hidden units using mean square error as the loss function.
+I aim to train two models: a linear classifier (1-layer NN), and a 2-layer NN with 300 hidden units using mean square error as the loss function, and also with sigmoid.
 
-I don't know yet the difficulty in implementing those from scratch in Java, therefore these goals might change.
+I don't know yet the difficulty in implementing those from scratch in Java, therefore these goals might change, so as the chosen optimization.
 
 It has been shown that a 1-layer NN has bad performance on the MNIST dataset compared to other methods. However, since I will be training in my own CPU it would be unfeasible to implement a model of higher complexity, such a deep convolutional neural network. However, if get ahead of schedule and learn how to run Java models in a cluster, I can try to implement those for my own educational purpose.
+
+## Complexity
+For gradient descent, the run-time complexity with backpropagation is O(n<sup>6</sup>), assuming n neurons in each layer, n layers, and n gradient iterations.
+
+The inference time with forward propagation in O(n<sup>4</sup>).
