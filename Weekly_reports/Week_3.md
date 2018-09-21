@@ -9,9 +9,9 @@
 - Did not find any way to test the Image class. It may not be needed, but it's open to suggestions.
 
 ## Time track
-Approximately 3h fixing code.
-Approximately 4h making tests.
-Approximately 6h coding perceptron in python, although that probably should not be counted here.
+- Approximately 3h fixing code.
+- Approximately 4h making tests.
+- Approximately 6h coding perceptron in python, although that probably should not be counted here.
 
 ## Goals for Week 4
 - Make more tests.
