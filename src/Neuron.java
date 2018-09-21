@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Neuron {
     // learning rate
     float LR = 0.01;

@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Network {
 
     Neuron[] inp_layer;
@@ -27,7 +29,7 @@ public class Network {
         float[] responses = new float[output_layer.length];
 
         for (int i = 0; i < inp_layer.length; i++) {
-            inp_layer[i].out = image.inputs[i];
+            inp_layer[i].out = image.features[i];
         }
 
         for (int j = 0; j < hidden_layer.length; j++) {
