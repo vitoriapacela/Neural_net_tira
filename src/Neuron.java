@@ -1,8 +1,7 @@
 import java.util.*;
 
 public class Neuron {
-    // learning rate
-    double LR = 0.01;
+    double LR = 0.01; // learning rate
 
     Neuron[] n_inputs;
     double[] n_weights;
@@ -48,11 +47,4 @@ public class Neuron {
             n_weights[i] += n_inputs[i].n_output * delta;
         }
     }
-
-    void display() {
-        stroke(200);
-        fill(128 * (1 - n_output)); // scales value from [-1, 1] to [0, 255]
-        ellipse(0, 0, 16, 16);
-    }
-
 }

@@ -16,70 +16,12 @@ public class Main {
     
     Image[] test_set;
     Image[] train_set;
-
-    //Button trainB, testB;
     
     void setup() {
-        //size(1000, 400);
         setupSigmoid();
         loadData();
         nn = new Network(196, 49, 10);
-        //smooth();
-        //stroke(150);
-    
-        //trainB = new Button(width*0.06, height*0.9, "Train");
-        //testB = new Button(width*011, height*0.9, "Test");
     }
-
-    /*
-    void draw() {
-        //nn.respond(test_set[imgNum]);
-        background(255);
-        nn.display();
-    
-        fill(100);
-        text("Test image: #" + testImg, width*0.18, height*0.89);
-        text("Train image: " + trainImg, width*0.18, height*0.93);
-        
-        text("Total train: " + totalTrain, width*0.32, height*0.89);
-        text("Total test: " + totalTest, width*0.32, height*0.93);
-        
-        if (totalTest > 0) {
-            sucess = (float)totalRight / (float)totalTest;
-        }
-        text("Success rate: " + nfc(sucess, 2), width*0.44, height*0.89);
-        text("Image label: " + test_set[testImg].output, width*0.44, height*0.93);
-    
-        //trainB.display();
-        //testB.display();
-    }
- 
-    
-    void mousePressed() {
-        if (trainB.hover()) {
-            for (int i = 0; i < 500; i++) {
-                trainImg = (int) floor(random(0, train_set.length));
-                nn.respond(train_set[trainImg]);
-                nn.train(train_set[trainImg].labels);
-                totalTrain++;
-            }
-        }
-    
-        else if (testB.hover()) {
-            testImg = (int) floor(random(0, test_set.length));
-            nn.respond(test_set[testImg]);
-            nn.display();
-    
-            if (nn.index == test_set[testImg].output) {
-                totalRight++;
-            }
-    
-            println(testImg + " " + nn.index + " " + test_set[testImg].output);
-            totalTest++;
-        }
-        redraw();
-    }
-    */
 
     void loadData(){
         File images_file = new File("t10k-images-14x14-idx3-ubyte");
@@ -131,6 +73,7 @@ void setupSigmoid() {
   
 double lookupSigmoid(double x) {
     // accesses the sigmoid function
+    // to implement: constrain
     return g_sigmoid[(int) Math.floor((x + 5.0) * 20.0)];
     }
 
