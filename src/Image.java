@@ -2,13 +2,13 @@ import java.util.*;
 
 public class Image {
 
-    float[] features;
-    float[] labels;
+    double[] features;
+    double[] labels;
     int output;
 
     Image() {
-        features = new float[196]; // 14x14 images
-        labels = new float[10]; // digits from 0 to 9
+        features = new double[196]; // 14x14 images
+        labels = new double[10]; // digits from 0 to 9
     }
 
     void loadImg(byte[] imgs, int offset){
@@ -19,18 +19,16 @@ public class Image {
     }
 
     void loadLabel(byte[] labels, int offset) {
-        output = (int)labels[offset];
+        output = (int) labels[offset];
 
         for (int i = 0; i < 10; i++) {
-            // +1 if the outputs correspond; -1 otherwise.
+            // +1 if the outputs are the same; -1 otherwise.
             if (i == output) {
-                labels[i] = 1.0;
+                labels[i] = 1;
             }
             else {
-                labels[i] = -1.0;
+                labels[i] = -1;
             }
         }
     }
 }
-
-

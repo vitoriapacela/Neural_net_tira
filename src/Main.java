@@ -84,8 +84,8 @@ public class Main {
     void loadData(){
         File images_file = new File("t10k-images-14x14-idx3-ubyte");
         File labels_file = new File("t10k-labels-idx1-ubyte");
-        byte[] images;
-        byte[] labels;
+        byte[] images = null;
+        byte[] labels = null;
 
         try{
             images = Files.readAllBytes(images_file.toPath());

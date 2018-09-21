@@ -16,7 +16,7 @@ public class Network {
             inp_layer[i] = new Neuron();
         }
 
-        for (j = 0; j < hidden_layer.length; j++) {
+        for (int j = 0; j < hidden_layer.length; j++) {
             hidden_layer[j] = new Neuron(inp_layer);
         }
 
@@ -29,18 +29,19 @@ public class Network {
         float[] responses = new float[output_layer.length];
 
         for (int i = 0; i < inp_layer.length; i++) {
-            inp_layer[i].out = image.features[i];
+            inp_layer[i].n_output = image.features[i];
         }
 
         for (int j = 0; j < hidden_layer.length; j++) {
             hidden_layer[j].respond();
         }
 
-        for (k = 0; k < output_layer.length; k++) {
+        for (int k = 0; k < output_layer.length; k++) {
             output_layer[k].respond();
         }
     }
 
+    /*
     void display() {
         for (int i = 0; i < inp_layer.length; i++) {
             pushMatrix();
@@ -88,6 +89,7 @@ public class Network {
         ellipse(
         width * 0.85, (bestIndex%10) * height / 15.0 + height * 0.2, 25, 25);
     }
+    */
 
     void train(float[] outputs) {
         for (int a = 0; a < output_layer.length; a++) {
@@ -95,9 +97,9 @@ public class Network {
             output_layer[a].train();
         }
 
-        float best = -1.0;
+        double best = -1.0;
         for (int b = 0; b < output_layer.length; b++) {
-            if (output_layer[b].output > best) {
+            if (output_layer[b].n_output > best) {
                 index = b;
             }
         }
