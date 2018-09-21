@@ -1,34 +1,18 @@
-/*
-// TO IMPLEMENT!!!
-@Test
-public void nonZeroSets() {
-
-    // test if loadData() has modified the arrays.
-
-    // Act
-    Image[] test_set;
-    Image[] train_set;
-    loadData();
-    
-    for (int i = 0; i < test_set.length; i++) {
-        if (test_set[])
-    }
-
-    // Assert
-
-}
-*/
-
 import java.util.*;
 import org.junit.Test;
 import org.junit.Assert;
 
+/**
+ * @author Vitoria Barin Pacela <vitoria.barinpacela@helsinki.fi>
+ */
+
 public class MainTest {
 
+    /**
+     * Test if setupSigmoid() has modified the array.
+     */
     @Test
     public void sigmoidNotZero() {
-        // test if setupSigmoid() has modified the array.
-    
         // Arrange
         notZero = false;
         array = false;
@@ -48,10 +32,11 @@ public class MainTest {
         Assert.assertEquals(array, notZero);
     }
     
+    /**
+     * Test if sigmoid(0)=0.5
+     */
     @Test
     public void sigZero() {
-        // test if sigmoid(0)=0.5
-    
         // Arrange
         s_0 = 0.5;
         double x = 0.0;
@@ -63,10 +48,12 @@ public class MainTest {
         Assert.assertEquals(y, s_0);
     }
     
+
+    /**
+     * Test if sigmoid(6)=1 (should be true for any number greater than 6 at least)
+     */
     @Test
     public void sigSix() {
-        // test if sigmoid(6)=1 (should be true for any number greater than 6 at least)
-        
         // Arrange
         s_0 = 1;
         double x = 6.0;
@@ -78,10 +65,11 @@ public class MainTest {
         Assert.assertEquals(y, s_0);
     }
     
+    /**
+     * Test if sigmoid(-6)=0 (should be true for any number less than -6 too)
+     */
     @Test
-    public void sigMSix() {
-        // test if sigmoid(-6)=0 (should be true for any number less than -6 too)
-        
+    public void sigMSix() {        
         // Arrange
         s_0 = 0;
         double x = -6.0;
@@ -104,5 +92,26 @@ public class MainTest {
     
         Assert.assertEquals(error, correctError);
     }
+
+    /*
+// TO IMPLEMENT!!!
+@Test
+public void nonZeroSets() {
+
+    // test if loadData() has modified the arrays.
+
+    // Act
+    Image[] test_set;
+    Image[] train_set;
+    loadData();
+    
+    for (int i = 0; i < test_set.length; i++) {
+        if (test_set[])
+    }
+
+    // Assert
+
+}
+*/
 }
 

@@ -2,20 +2,20 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+/**
+ * @author Vitoria Barin Pacela <vitoria.barinpacela@helsinki.fi>
+ */
+
 public class Main {
     Network nn;
-
-    int totalTrain = 0;
-    int totalTest = 0;
-    int totalRight = 0;
-    float sucess = 0;
-    int testImg = 0;
-    int trainImg = 0;
     
     double[] g_sigmoid = new double[200];
     
     Image[] test_set;
     Image[] train_set;
+
+    int test_card = 0;
+    int train_card = 0;
     
     void setup() {
         setupSigmoid();
@@ -23,6 +23,26 @@ public class Main {
         nn = new Network(196, 49, 10);
     }
 
+    public void main(String[] args) {
+        setup();
+
+        // Train
+        for (int i = 0; i < 500; i++) {
+            train_card = (int) Math.floor(Math.random()*train_set.length);
+            nn.respond(train_set[train_card]);
+            nn.train(train_set[train_card].targets);
+          }
+
+        // Test
+        test_card = (int) Math.floor(Math.random()*test_set.length);
+        nn.respond(test_set[test_card]);
+    }
+
+    /**
+     * Loads MNIST data in train and test set arrays.
+     * Expects files with names "t10k-images-14x14-idx3-ubyte" and
+     * "t10k-labels-idx1-ubyte" in the same src/ directory.
+     */
     void loadData(){
         File images_file = new File("t10k-images-14x14-idx3-ubyte");
         File labels_file = new File("t10k-labels-idx1-ubyte");
@@ -63,18 +83,23 @@ public class Main {
         }  
     }
 
-
+/**
+ * Initializes g_sigmoid array with values of the sigmoid function for each index.
+ */
 void setupSigmoid() {
     for (int i = 0; i < 200; i++) {
       double x = (i / 20.0) - 5.0;
       g_sigmoid[i] = 2.0 / (1.0 + Math.exp(-2.0 * x)) - 1.0;
     }
   }
+
   
+/**
+ * Accesses value of the sigmoid function.
+ * @param x value desired for obtaining sigmoid(x).
+ */  
 double lookupSigmoid(double x) {
-    // accesses the sigmoid function
     // to implement: constrain
     return g_sigmoid[(int) Math.floor((x + 5.0) * 20.0)];
     }
-
 }

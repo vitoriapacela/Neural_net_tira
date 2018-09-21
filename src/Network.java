@@ -1,5 +1,9 @@
 import java.util.*;
 
+/**
+ * @author Vitoria Barin Pacela <vitoria.barinpacela@helsinki.fi>
+ */
+
 public class Network {
 
     Neuron[] inp_layer;
@@ -25,9 +29,11 @@ public class Network {
         }
     }
 
+    /**
+     * Every layer of the network responds to its input.
+     * @param image input image.
+     */
     void respond(Image image) {
-        float[] responses = new float[output_layer.length];
-
         for (int i = 0; i < inp_layer.length; i++) {
             inp_layer[i].n_output = image.features[i];
         }
@@ -41,7 +47,12 @@ public class Network {
         }
     }
     
-    void train(float[] outputs) {
+    /**
+     * Trains every neuron of every layer of the network.
+     * Backpropagation implemented.
+     * @param outputs output response from respond() over the input.
+     */
+    void train(double[] outputs) {
         for (int a = 0; a < output_layer.length; a++) {
             output_layer[a].setError(outputs[a]);
             output_layer[a].train();
