@@ -14,8 +14,6 @@ import java.io.IOException;
 public final class Program {
     Network nn;
     
-    double[] g_sigmoid = new double[200];
-    
     MnistMatrix[] train_set;
     MnistMatrix[] test_set;
 
