@@ -1,8 +1,11 @@
 package neuralNet;
 
-import neuralNet.MnistMatrix;
 import java.io.*;
 
+/**
+ * Read MNIST data from -ubyte files and set array of image matrixes.
+ * @author barimpac
+ */
 public class MnistDataReader  {
 
     public MnistMatrix[] readData(String dataFilePath, String labelFilePath) throws IOException {

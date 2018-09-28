@@ -96,8 +96,7 @@ public class Neuron {
             sig[i] = 1.0 / (1.0 + Math.exp(-1.0 * x));
             //System.out.println(i);
             //System.out.println(sig[i]);
-        }
-        
+        }   
     }
     
     public int constrain(int value) {

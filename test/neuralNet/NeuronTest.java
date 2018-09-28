@@ -17,6 +17,11 @@ import org.junit.Assert;
 
 public class NeuronTest {
     
+    /**
+     * Auxiliar method to test if sigmoid(x) = expected.
+     * @param x value
+     * @param expected value of sigmoid(x). 
+     */
     public void sigIsEqual(double x, double expected) { 
         // Act
         Neuron neuron = new Neuron();
@@ -47,5 +52,17 @@ public class NeuronTest {
     @Test
     public void sigMSix() {        
         sigIsEqual(-6.0, 0.0);
+    }
+    
+    /**
+     * Tests if the error is correctly asserted.
+     */
+    @Test
+    public void setErrorToOne() {
+        double correctError = 0.0;
+        double error = 0.0;
+        Neuron neuron = new Neuron();
+        neuron.setError(1.0);
+        Assert.assertEquals(error, correctError, 0.001);
     }
 }

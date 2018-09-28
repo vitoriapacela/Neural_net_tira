@@ -5,10 +5,7 @@
  */
 package neuralNet;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-
 
 /**
  * @author Vitoria Barin Pacela <vitoria.barinpacela@helsinki.fi>
@@ -25,11 +22,17 @@ public final class Program {
     int test_card = 0;
     int train_card = 0;
     
+    /**
+     * Build neural network.
+     */
     void setup() {
-        //setupSigmoid();
-        nn = new Network(196, 49, 10);
+        nn = new Network(784, 49, 10);
     }
 
+    /**
+     * Read MNIST data and put it into train and test sets.
+     * @throws IOException 
+     */
     public Program() throws IOException {
         this.train_set = new MnistDataReader().readData("resources/train-images.idx3-ubyte", "resources/train-labels.idx1-ubyte");
         this.test_set = new MnistDataReader().readData("resources/t10k-images.idx3-ubyte", "resources/t10k-labels.idx1-ubyte");
@@ -37,18 +40,22 @@ public final class Program {
         //printMnistMatrix(test_set[0]);
         setup();
 
-        // Train
+        // Train set
         for (int i = 0; i < 500; i++) {
             train_card = (int) Math.floor(Math.random() * train_set.length);
             nn.respond(train_set[train_card]);
             nn.train(train_set[train_card].outputs);
           }
 
-        // Test
+        // Test set
         test_card = (int) Math.floor(Math.random()*test_set.length);
         nn.respond(test_set[test_card]);
     }
 
+    /**
+     * Print MNIST Matrix details, such as label and values.
+     * @param matrix 
+     */
     private static void printMnistMatrix(final MnistMatrix matrix) {
         System.out.println("label: " + matrix.getLabel());
         for (int r = 0; r < matrix.getNumberOfRows(); r++ ) {
