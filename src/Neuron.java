@@ -23,9 +23,11 @@ public class Neuron {
         n_weights = new double[previous_n_inputs.length];
         error = 0.0;
 
+        Random randomno = new Random();
+
         for (int i = 0; i < n_inputs.length; i++) {
             n_inputs[i] = previous_n_inputs[i];
-            n_weights[i] = 2 * Math.nextDouble() - 1;   ;
+            n_weights[i] = 2 * radomno.nextDouble() - 1;   ;
         }
     }
 
@@ -77,7 +79,7 @@ public class Neuron {
     void setupSigmoid() {
         for (int i = 0; i < 200; i++) {
         double x = (i / 20.0) - 5.0;
-        g_sigmoid[i] = 2.0 / (1.0 + Math.exp(-2.0 * x)) - 1.0;
+        sig[i] = 2.0 / (1.0 + Math.exp(-2.0 * x)) - 1.0;
         }
     }
 }
