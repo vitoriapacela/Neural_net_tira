@@ -55,7 +55,7 @@ public class NeuronTest {
     }
     
     /**
-     * Tests if the error is correctly asserted.
+     * Test if the error is correctly asserted.
      */
     @Test
     public void setErrorToOne() {
@@ -65,4 +65,30 @@ public class NeuronTest {
         neuron.setError(1.0);
         Assert.assertEquals(error, correctError, 0.001);
     }
+    
+    /**
+     * Test if the error is set to 0.0 when the neuron is built.
+     */
+    @Test
+    public void neuronBuilt(){
+        Neuron neuron = new Neuron();
+        Assert.assertFalse((neuron.error != 0.0));
+    }
+
+/**
+    NOT WORKING YET
+    @Test
+    public void testResponse() {
+        Neuron neuron = new Neuron();
+        neuron.respond();
+        Assert.assertEquals(0, neuron);
+//Assert.assertFalse((neuron.error == 0.0));
+    }
+    
+    public void testResponse2() {
+        Neuron neuron = new Neuron();
+        neuron.respond();
+        Assert.assertFalse((neuron.n_output < 0.0) || (neuron.n_output > 1.0));
+    }
+    */
 }
