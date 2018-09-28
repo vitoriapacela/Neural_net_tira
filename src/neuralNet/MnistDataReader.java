@@ -1,6 +1,6 @@
-package javaapplication1;
+package neuralNet;
 
-import javaapplication1.MnistMatrix;
+import neuralNet.MnistMatrix;
 import java.io.*;
 
 public class MnistDataReader  {

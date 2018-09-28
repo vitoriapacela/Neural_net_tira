@@ -1,6 +1,6 @@
 # User Manual
 
-- Make a Java project, copy the files in `src/` in a source package named "javaaplication1", and the test file in a default test package.
+- Make a Java project, copy `src/` and `test` in it. They will both contain the same package, `neuralNet`.
 - The tests used JUnit 4.12.
 - Download the MNIST dataset from its [database](http://yann.lecun.com/exdb/mnist/).
 -- train-images-idx3-ubyte.gz:  training set images (9912422 bytes) 

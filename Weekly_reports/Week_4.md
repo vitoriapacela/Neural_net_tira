@@ -11,6 +11,7 @@
 ## Time track
 - IDE setup: app. 5h.
 - Fixing MNIST dataset loading: app. 4h.
+- Fixing tests: 3h.
 
 ## Goals for Week 5
 - Improve testing.

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplication1;
+package neuralNet;
 
 import java.util.*;
 
@@ -22,14 +22,15 @@ public class Neuron {
     double[] sig = new double[200];
 
     Neuron() {
+        this.setupSigmoid();
         error = 0.0;
     }
 
     Neuron(Neuron[] previous_n_inputs) {
         n_inputs = new Neuron[previous_n_inputs.length];
         n_weights = new double[previous_n_inputs.length];
-        error = 0.0;
-
+        error = 0.0;        
+        
         Random randomno = new Random();
         
         for (int i = 0; i < n_inputs.length; i++) {
@@ -77,17 +78,30 @@ public class Neuron {
      */ 
     double lookupSigmoid(double x) {
         // to implement: constrain
-        return sig[(int) Math.floor((x + 5.0) * 20.0)];
+        
+        //System.out.println(x);
+        int idx = constrain((int) Math.floor((x + 5.0) * 20.0));
+        //System.out.println(idx);
+        double toReturn = sig[idx];
+        //System.out.println(toReturn);
+        return toReturn;
         }
 
     /**
      * Initializes g_sigmoid array with values of the sigmoid function for each index.
      */
-    void setupSigmoid() {
+    final void setupSigmoid() {
         for (int i = 0; i < 200; i++) {
-        double x = (i / 20.0) - 5.0;
-        sig[i] = 2.0 / (1.0 + Math.exp(-2.0 * x)) - 1.0;
+            double x = (i / 20.0) - 5.0;
+            sig[i] = 1.0 / (1.0 + Math.exp(-1.0 * x));
+            //System.out.println(i);
+            //System.out.println(sig[i]);
         }
+        
+    }
+    
+    public int constrain(int value) {
+        return Math.max(0, Math.min(value, 199));
     }
 }
 

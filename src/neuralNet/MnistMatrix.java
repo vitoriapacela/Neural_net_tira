@@ -1,4 +1,4 @@
-package javaapplication1;
+package neuralNet;
 
 public final class MnistMatrix {
 
