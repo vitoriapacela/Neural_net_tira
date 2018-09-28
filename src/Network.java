@@ -1,4 +1,10 @@
-import java.util.*;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication1;
+
 
 /**
  * @author Vitoria Barin Pacela <vitoria.barinpacela@helsinki.fi>
@@ -33,17 +39,17 @@ public class Network {
      * Every layer of the network responds to its input.
      * @param image input image.
      */
-    void respond(Image image) {
+    void respond(MnistMatrix image) {
         for (int i = 0; i < inp_layer.length; i++) {
             inp_layer[i].n_output = image.features[i];
         }
 
-        for (int j = 0; j < hidden_layer.length; j++) {
-            hidden_layer[j].respond();
+        for (Neuron hidden_layer1 : hidden_layer) {
+            hidden_layer1.respond();
         }
 
-        for (int k = 0; k < output_layer.length; k++) {
-            output_layer[k].respond();
+        for (Neuron output_layer1 : output_layer) {
+            output_layer1.respond();
         }
     }
     
@@ -65,8 +71,8 @@ public class Network {
             }
         }
 
-        for (int c = 0; c < hidden_layer.length; c++) {
-            hidden_layer[c].train();
+        for (Neuron hidden_layer1 : hidden_layer) {
+            hidden_layer1.train();
         } 
     }
 }

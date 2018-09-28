@@ -1,3 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication1;
+
 import java.util.*;
 
 /**
@@ -24,10 +31,10 @@ public class Neuron {
         error = 0.0;
 
         Random randomno = new Random();
-
+        
         for (int i = 0; i < n_inputs.length; i++) {
             n_inputs[i] = previous_n_inputs[i];
-            n_weights[i] = 2 * radomno.nextDouble() - 1;   ;
+            n_weights[i] = 2 * randomno.nextDouble() - 1;   ;
         }
     }
 
@@ -83,3 +90,4 @@ public class Neuron {
         }
     }
 }
+
