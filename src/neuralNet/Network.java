@@ -7,6 +7,7 @@ package neuralNet;
 
 
 /**
+ * Build the neural network layer by layer (input, hidden, and output) and train it.
  * @author Vitoria Barin Pacela <vitoria.barinpacela@helsinki.fi>
  */
 
@@ -55,7 +56,7 @@ public class Network {
     
     /**
      * Trains every neuron of every layer of the network.
-     * Backpropagation implemented.
+     * Backpropagation.
      * @param outputs output response from respond() over the input.
      */
     void train(double[] outputs) {

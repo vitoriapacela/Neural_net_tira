@@ -8,6 +8,7 @@ package neuralNet;
 import java.util.*;
 
 /**
+ * Initialize and train perceptron (neuron).
  * @author Vitoria Barin Pacela <vitoria.barinpacela@helsinki.fi>
  */
 

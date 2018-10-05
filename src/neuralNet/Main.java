@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Run the Program.
  * @author barimpac
  */
 public class Main {

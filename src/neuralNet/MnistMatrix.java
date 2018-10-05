@@ -1,5 +1,10 @@
 package neuralNet;
 
+/**
+ * Auxiliar data structure to hold in a matrix the MNIST data read with MnistDataReader.
+ * @author barimpac
+ */
+
 public final class MnistMatrix {
 
     public int [][] data;

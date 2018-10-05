@@ -8,6 +8,7 @@ package neuralNet;
 import java.io.IOException;
 
 /**
+ * Main program run. Read the data into training and test sets, initialize the neural network, and train it.
  * @author Vitoria Barin Pacela <vitoria.barinpacela@helsinki.fi>
  */
 
@@ -46,7 +47,7 @@ public final class Program {
           }
 
         // Test set
-        test_card = (int) Math.floor(Math.random()*test_set.length);
+        test_card = (int) Math.floor(Math.random() * test_set.length);
         nn.respond(test_set[test_card]);
     }
 
