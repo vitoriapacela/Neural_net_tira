@@ -3,9 +3,10 @@
 ## Main structure of the program
 * The Main class initializes and runs the Program.
 * The Program class currently initializes a neural network with three layers: input, hidden, and output.
- - the input layer contains 784 neurons, which is the number of pixels in a 28 x 28 image from the MNIST dataset.
- - the hidden layer contains 49 neurons.
- - the output layer contains 10 neurons. Each neuron represents one of the classes (digits from 0 to 9).
+  - the input layer contains 784 neurons, which is the number of pixels in a 28 x 28 image from the MNIST dataset.
+  - the hidden layer contains 49 neurons.
+  - the output layer contains 10 neurons. Each neuron represents one of the classes (digits from 0 to 9).
+
 The program class also reads the MNIST data into training and test sets.
 It feeds the neural network with 500 images from the training set randomly sorted, and the neural network trains.
 Then an image from the test set is randomly sorted so that the neural network predicts its output.
