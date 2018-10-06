@@ -36,7 +36,9 @@ public class Neuron {
         
         for (int i = 0; i < n_inputs.length; i++) {
             n_inputs[i] = previous_n_inputs[i];
-            n_weights[i] = 2 * randomno.nextDouble() - 1;   ;
+            n_weights[i] = 2 * randomno.nextDouble() - 1;
+            //System.out.println(n_weights[i]);
+            //System.out.println(n_inputs[i].n_output);
         }
     }
 
@@ -65,11 +67,12 @@ public class Neuron {
      * Trains neuron.
      */
     void train() {
-        double delta = (1.0 - n_output)*(1.0 + n_output) * error * LR;
+        double delta = (1.0 - n_output) * (1.0 + n_output) * error * LR;
 
         for (int i = 0; i < n_inputs.length; i++) {
             n_inputs[i].error += n_weights[i] * error;
             n_weights[i] += n_inputs[i].n_output * delta;
+            //System.out.println(n_weights[i]);
         }
     }
 
@@ -102,6 +105,29 @@ public class Neuron {
     
     public int constrain(int value) {
         return Math.max(0, Math.min(value, 199));
+    }
+    
+    public double getOutput() {
+        return this.n_output;
+    }
+    
+    public double getError() {
+        return this.error;
+    }
+    
+    
+    /**
+     *public void printInputs() {
+        for (Neuron n_input : this.n_inputs) {
+            System.out.println(n_input);
+        }
+    }
+     */
+    
+    public void printWeights() {
+        for (int i = 0; i < this.n_weights.length; i++) {
+            System.out.println(this.n_weights[i]);
+        }
     }
 }
 

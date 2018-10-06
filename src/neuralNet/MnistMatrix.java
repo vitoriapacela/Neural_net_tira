@@ -24,7 +24,7 @@ public final class MnistMatrix {
         data = new int[nRows][nCols];
         
         features = new int[nRows * nCols];
-        this.setFeatures();
+        //this.setFeatures();
         
         outputs = new double[10];
         this.setOutputs();
@@ -41,6 +41,8 @@ public final class MnistMatrix {
         for (int col = 0; col < nCols; col++) {
             for (int row = 0; row < nRows; row++) {
                 features[idx] = data[row][col];
+                //System.out.println(data[row][col]);
+                //System.out.println(features[idx]);
                 idx++;
             }
         }
@@ -98,6 +100,7 @@ public final class MnistMatrix {
         } else {
           outputs[i] = -1.0;
         }
+        //System.out.println(outputs[i]);
       }
     }
 }

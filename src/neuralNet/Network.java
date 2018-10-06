@@ -42,7 +42,8 @@ public class Network {
      */
     void respond(MnistMatrix image) {
         for (int i = 0; i < inp_layer.length; i++) {
-            inp_layer[i].n_output = image.features[i];
+            inp_layer[i].n_output = (double) image.features[i];
+            //System.out.println(inp_layer[i].n_output);
         }
 
         for (Neuron hidden_layer1 : hidden_layer) {
@@ -75,5 +76,39 @@ public class Network {
         for (Neuron hidden_layer1 : hidden_layer) {
             hidden_layer1.train();
         } 
+    }
+    
+    public double[] getOutput() {
+        double[] outputs = new double[this.output_layer.length];
+        for (int k = 0; k < output_layer.length; k++) {
+            double out = this.output_layer[k].getOutput();
+            outputs[k] = out;
+        }
+        return outputs;
+    }
+    
+    public void printOutput() {
+        double[] outputs = this.getOutput();
+        for (int k = 0; k < output_layer.length; k++) {
+            System.out.println(outputs[k]);
+        }
+    }
+    
+    public void printInputWeights() {
+        for (int k = 0; k < this.inp_layer.length; k++) {
+            this.inp_layer[k].printWeights();
+        }
+    }
+    
+    public void printHiddenWeights() {
+        for (int k = 0; k < this.hidden_layer.length; k++) {
+            this.inp_layer[k].printWeights();
+        }
+    }
+    
+    public void printOutputWeights() {
+        for (int k = 0; k < this.inp_layer.length; k++) {
+            this.output_layer[k].printWeights();
+        }
     }
 }

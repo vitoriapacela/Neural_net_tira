@@ -49,6 +49,8 @@ public final class Program {
         // Test set
         test_card = (int) Math.floor(Math.random() * test_set.length);
         nn.respond(test_set[test_card]);
+        //nn.printOutput();
+        //nn.printHiddenWeights();
     }
 
     /**
