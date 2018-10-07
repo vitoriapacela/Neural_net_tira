@@ -40,7 +40,7 @@ public final class Program {
         setup();
 
         // Train set
-        for (int i = 0; i < 500; i++) {
+        for (int i = 0; i < 100; i++) {
             train_card = (int) Math.floor(Math.random() * train_set.length);
             nn.respond(train_set[train_card]);
             nn.train(train_set[train_card].outputs);
@@ -49,8 +49,13 @@ public final class Program {
         // Test set
         test_card = (int) Math.floor(Math.random() * test_set.length);
         nn.respond(test_set[test_card]);
-        //nn.printOutput();
-        //nn.printHiddenWeights();
+        
+        System.out.println("prediction:");
+        int pred = nn.printOutput();
+        System.out.println(pred);
+        
+        System.out.println("true value:");
+        System.out.println(test_set[test_card].label);
     }
 
     /**

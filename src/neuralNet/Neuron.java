@@ -16,11 +16,11 @@ public class Neuron {
     // learning rate
     double LR = 0.01; 
 
-    Neuron[] n_inputs;
-    double[] n_weights;
+    Neuron[] layer_inputs;
+    double[] layer_weights;
     double n_output;
     double error;
-    double[] sig = new double[200];
+    double[] sigmoid = new double[200];
 
     Neuron() {
         this.setupSigmoid();
@@ -28,30 +28,34 @@ public class Neuron {
     }
 
     Neuron(Neuron[] previous_n_inputs) {
-        n_inputs = new Neuron[previous_n_inputs.length];
-        n_weights = new double[previous_n_inputs.length];
+        layer_inputs = new Neuron[previous_n_inputs.length];
+        layer_weights = new double[previous_n_inputs.length];
         error = 0.0;        
         
         Random randomno = new Random();
         
-        for (int i = 0; i < n_inputs.length; i++) {
-            n_inputs[i] = previous_n_inputs[i];
-            n_weights[i] = 2 * randomno.nextDouble() - 1;
-            //System.out.println(n_weights[i]);
-            //System.out.println(n_inputs[i].n_output);
+        for (int i = 0; i < layer_inputs.length; i++) {
+            layer_inputs[i] = previous_n_inputs[i];
+            layer_weights[i] = 2 * randomno.nextDouble() - 1;
+            //System.out.println(n_weights[i]); works, makes random weights
+            //System.out.println(n_inputs[i].n_output); everything will be 0, works
         }
     }
 
     /**
-     * Neuron's response to the input.
+     * Layer of Neurons' response to the input.
      */
-    void respond() {
-        double input = 0.0;
+    void layerRespond() {
+        double inputSum = 0.0;
 
-        for (int i = 0; i < n_inputs.length; i++) {
-            input += n_inputs[i].n_output * n_weights[i];
+        for (int i = 0; i < layer_inputs.length; i++) {
+            inputSum += layer_inputs[i].n_output * layer_weights[i];
+            //System.out.println(inputSum);
         }
-        n_output = lookupSigmoid(input);
+        //System.out.println(inputSum);
+        n_output = getSigmoid(inputSum);
+        //n_output = lookupSigmoid(inputSum);
+        //System.out.println(n_output);
         error = 0.0;
     }
 
@@ -69,10 +73,10 @@ public class Neuron {
     void train() {
         double delta = (1.0 - n_output) * (1.0 + n_output) * error * LR;
 
-        for (int i = 0; i < n_inputs.length; i++) {
-            n_inputs[i].error += n_weights[i] * error;
-            n_weights[i] += n_inputs[i].n_output * delta;
-            //System.out.println(n_weights[i]);
+        for (int i = 0; i < layer_inputs.length; i++) {
+            layer_inputs[i].error += layer_weights[i] * error;
+            layer_weights[i] += layer_inputs[i].n_output * delta;
+            //System.out.println(n_weights[i]); seems to be working
         }
     }
 
@@ -81,13 +85,11 @@ public class Neuron {
      * @param x value desired for obtaining sigmoid(x).
      */ 
     double lookupSigmoid(double x) {
-        // to implement: constrain
-        
         //System.out.println(x);
         int idx = constrain((int) Math.floor((x + 5.0) * 20.0));
         //System.out.println(idx);
-        double toReturn = sig[idx];
-        //System.out.println(toReturn);
+        double toReturn = sigmoid[idx];
+        //System.out.println(toReturn); everything here working
         return toReturn;
         }
 
@@ -97,17 +99,21 @@ public class Neuron {
     final void setupSigmoid() {
         for (int i = 0; i < 200; i++) {
             double x = (i / 20.0) - 5.0;
-            sig[i] = 1.0 / (1.0 + Math.exp(-1.0 * x));
-            //System.out.println(i);
-            //System.out.println(sig[i]);
+            sigmoid[i] = 1.0 / (1.0 + Math.exp(-1.0 * x));
+            //System.out.println(i); ok
+            //System.out.println(sig[i]); works
         }   
+    }
+    
+    public double getSigmoid(double x) {
+        return 1.0 / (1.0 + Math.exp(-1.0 * x));
     }
     
     public int constrain(int value) {
         return Math.max(0, Math.min(value, 199));
     }
     
-    public double getOutput() {
+    public double getNeuronOutput() {
         return this.n_output;
     }
     
@@ -115,19 +121,20 @@ public class Neuron {
         return this.error;
     }
     
-    
-    /**
-     *public void printInputs() {
-        for (Neuron n_input : this.n_inputs) {
-            System.out.println(n_input);
+    public void printInputs() {
+        for (Neuron n_input : this.layer_inputs) {
+            System.out.println(n_input.getNeuronOutput());
         }
     }
-     */
     
-    public void printWeights() {
+    /**
+     * DOES NOT WORK
+     *     public void printWeights() {
         for (int i = 0; i < this.n_weights.length; i++) {
             System.out.println(this.n_weights[i]);
         }
     }
+     */
+
 }
 

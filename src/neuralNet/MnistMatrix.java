@@ -14,7 +14,7 @@ public final class MnistMatrix {
 
     public int label;
     
-    public int[] features;
+    public double[] features;
     public double[] outputs;
 
     public MnistMatrix(int nRows, int nCols) {
@@ -23,7 +23,7 @@ public final class MnistMatrix {
 
         data = new int[nRows][nCols];
         
-        features = new int[nRows * nCols];
+        features = new double[nRows * nCols];
         //this.setFeatures();
         
         outputs = new double[10];
@@ -40,11 +40,23 @@ public final class MnistMatrix {
         int idx = 0;
         for (int col = 0; col < nCols; col++) {
             for (int row = 0; row < nRows; row++) {
-                features[idx] = data[row][col];
+                features[idx] = (double) data[row][col];
                 //System.out.println(data[row][col]);
                 //System.out.println(features[idx]);
                 idx++;
             }
+        }
+    }
+    
+    public void normalizeFeatures() {
+        double max = 0;
+        for (double feature : features) {
+            if (feature > max) {
+                max = feature;
+            }
+        }
+        for (int i = 0; i < features.length; i++) {
+            features[i] = features[i]/max;
         }
     }
 

@@ -39,6 +39,7 @@ public class MnistDataReader  {
                 for (int c = 0; c < nCols; c++) {
                     mnistMatrix.setValue(r, c, dataInputStream.readUnsignedByte());
                     mnistMatrix.setFeatures();
+                    mnistMatrix.normalizeFeatures();
                 }
             }
             data[i] = mnistMatrix;

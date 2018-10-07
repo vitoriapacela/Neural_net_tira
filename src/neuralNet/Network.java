@@ -43,15 +43,15 @@ public class Network {
     void respond(MnistMatrix image) {
         for (int i = 0; i < inp_layer.length; i++) {
             inp_layer[i].n_output = (double) image.features[i];
-            //System.out.println(inp_layer[i].n_output);
+            //System.out.println(inp_layer[i].n_output); seems to be working, prints pixels
         }
 
         for (Neuron hidden_layer1 : hidden_layer) {
-            hidden_layer1.respond();
+            hidden_layer1.layerRespond();
         }
 
         for (Neuron output_layer1 : output_layer) {
-            output_layer1.respond();
+            output_layer1.layerRespond();
         }
     }
     
@@ -78,23 +78,32 @@ public class Network {
         } 
     }
     
-    public double[] getOutput() {
+    public double[] getNetworkOutput() {
         double[] outputs = new double[this.output_layer.length];
         for (int k = 0; k < output_layer.length; k++) {
-            double out = this.output_layer[k].getOutput();
+            double out = this.output_layer[k].getNeuronOutput();
             outputs[k] = out;
         }
         return outputs;
     }
     
-    public void printOutput() {
-        double[] outputs = this.getOutput();
+    public int printOutput() {
+        double max = 0;
+        int digit = -1;
+        double[] outputs = this.getNetworkOutput();
         for (int k = 0; k < output_layer.length; k++) {
-            System.out.println(outputs[k]);
+            //System.out.println(outputs[k]);
+            if (outputs[k] > max) {
+                max = outputs[k];
+                digit = k;
+            }
         }
+        return digit;
     }
     
-    public void printInputWeights() {
+/**
+ * DOES NOT WORK
+ *     public void printInputWeights() {
         for (int k = 0; k < this.inp_layer.length; k++) {
             this.inp_layer[k].printWeights();
         }
@@ -111,4 +120,6 @@ public class Network {
             this.output_layer[k].printWeights();
         }
     }
+ */    
+
 }
