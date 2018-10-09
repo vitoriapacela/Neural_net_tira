@@ -58,7 +58,7 @@ public class Network {
     /**
      * Trains the network layer by layer.
      * Backpropagation.
-     * @param outputs output response from respond() over the input.
+     * @param outputs one-hot encoded label.
      */
     void train(double[] outputs) {
         for (int a = 0; a < output_layer.length; a++) {
@@ -99,27 +99,6 @@ public class Network {
             }
         }
         return digit;
-    }
-    
-/**
- * DOES NOT WORK
- *     public void printInputWeights() {
-        for (int k = 0; k < this.inp_layer.length; k++) {
-            this.inp_layer[k].printWeights();
-        }
-    }
-    
-    public void printHiddenWeights() {
-        for (int k = 0; k < this.hidden_layer.length; k++) {
-            this.inp_layer[k].printWeights();
-        }
-    }
-    
-    public void printOutputWeights() {
-        for (int k = 0; k < this.inp_layer.length; k++) {
-            this.output_layer[k].printWeights();
-        }
-    }
- */    
+    }   
 
 }

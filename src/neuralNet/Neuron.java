@@ -81,10 +81,6 @@ public class Neuron {
         return 1.0 / (1.0 + Math.exp(-1.0 * x));
     }
     
-    public int constrain(int value) {
-        return Math.max(0, Math.min(value, 199));
-    }
-    
     public double getNeuronOutput() {
         return this.n_output;
     }

@@ -43,19 +43,19 @@ public final class Program {
         for (int i = 0; i < 60000; i++) {
             train_card = (int) Math.floor(Math.random() * train_set.length);
             nn.respond(train_set[train_card]);
-            nn.train(train_set[train_card].outputs);
+            nn.train(train_set[train_card].multiLabel);
           }
 
         // Test set
         test_card = (int) Math.floor(Math.random() * test_set.length);
         nn.respond(test_set[test_card]);
         
-        //System.out.println("prediction:");
+        System.out.println("prediction:");
         int pred = nn.printOutput();
-        //System.out.println(pred);
+        System.out.println(pred);
         
-        //System.out.println("true value:");
-        //System.out.println(test_set[test_card].label);
+        System.out.println("true value:");
+        System.out.println(test_set[test_card].label);
         
         double errorSum = 0;
         int test_iterations = 1000;
@@ -69,8 +69,8 @@ public final class Program {
         }
         double errorRate = errorSum / (double) test_iterations;
         
-        //System.out.println("error rate:");
-        //System.out.println(errorRate);
+        System.out.println("error rate:");
+        System.out.println(errorRate);
     }
     
 
