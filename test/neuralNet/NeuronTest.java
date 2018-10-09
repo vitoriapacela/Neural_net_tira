@@ -25,7 +25,7 @@ public class NeuronTest {
     public void sigIsEqual(double x, double expected) { 
         // Act
         Neuron neuron = new Neuron();
-        double y = neuron.lookupSigmoid(x);
+        double y = neuron.getSigmoid(x);
         // Assert
         Assert.assertEquals(expected, y, 0.008);
     }
@@ -72,6 +72,7 @@ public class NeuronTest {
     @Test
     public void neuronBuilt(){
         Neuron neuron = new Neuron();
+        //System.nanoTime()
         Assert.assertFalse((neuron.error != 0.0));
     }
 
@@ -91,4 +92,5 @@ public class NeuronTest {
         Assert.assertFalse((neuron.n_output < 0.0) || (neuron.n_output > 1.0));
     }
     */
+    
 }

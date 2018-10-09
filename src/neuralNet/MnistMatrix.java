@@ -13,6 +13,7 @@ public final class MnistMatrix {
     public int nCols;
 
     public int label;
+    public int[] multiLabel;
     
     public double[] features;
     public double[] outputs;
@@ -22,6 +23,8 @@ public final class MnistMatrix {
         this.nCols = nCols;
 
         data = new int[nRows][nCols];
+        
+        multiLabel = new int[10];
         
         features = new double[nRows * nCols];
         //this.setFeatures();
@@ -114,5 +117,16 @@ public final class MnistMatrix {
         }
         //System.out.println(outputs[i]);
       }
+    }
+    
+    public void setLabel() {
+        for (int i = 0; i < 10; i++) {
+            if (this.label == i) {
+                this.multiLabel[i] = 1;
+            }
+            else {
+                this.multiLabel[i] = 0;
+            }
+        }
     }
 }

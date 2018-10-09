@@ -40,6 +40,7 @@ public class MnistDataReader  {
                     mnistMatrix.setValue(r, c, dataInputStream.readUnsignedByte());
                     mnistMatrix.setFeatures();
                     mnistMatrix.normalizeFeatures();
+                    mnistMatrix.setLabel();
                 }
             }
             data[i] = mnistMatrix;

@@ -25,7 +25,7 @@ public final class Program {
      * Build neural network.
      */
     void setup() {
-        nn = new Network(784, 49, 10);
+        nn = new Network(784, 300, 10);
     }
 
     /**
@@ -40,7 +40,7 @@ public final class Program {
         setup();
 
         // Train set
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 60000; i++) {
             train_card = (int) Math.floor(Math.random() * train_set.length);
             nn.respond(train_set[train_card]);
             nn.train(train_set[train_card].outputs);
@@ -50,13 +50,29 @@ public final class Program {
         test_card = (int) Math.floor(Math.random() * test_set.length);
         nn.respond(test_set[test_card]);
         
-        System.out.println("prediction:");
+        //System.out.println("prediction:");
         int pred = nn.printOutput();
-        System.out.println(pred);
+        //System.out.println(pred);
         
-        System.out.println("true value:");
-        System.out.println(test_set[test_card].label);
+        //System.out.println("true value:");
+        //System.out.println(test_set[test_card].label);
+        
+        double errorSum = 0;
+        int test_iterations = 1000;
+        for (int i = 0; i < test_iterations; i++) {
+            test_card = (int) Math.floor(Math.random() * test_set.length);
+            nn.respond(test_set[test_card]);
+            int prediction = nn.printOutput();
+            if (prediction != test_set[test_card].label) {
+                errorSum++;
+            } 
+        }
+        double errorRate = errorSum / (double) test_iterations;
+        
+        //System.out.println("error rate:");
+        //System.out.println(errorRate);
     }
+    
 
     /**
      * Print MNIST Matrix details, such as label and values.

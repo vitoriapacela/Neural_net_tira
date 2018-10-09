@@ -56,14 +56,14 @@ public class Network {
     }
     
     /**
-     * Trains every neuron of every layer of the network.
+     * Trains the network layer by layer.
      * Backpropagation.
      * @param outputs output response from respond() over the input.
      */
     void train(double[] outputs) {
         for (int a = 0; a < output_layer.length; a++) {
             output_layer[a].setError(outputs[a]);
-            output_layer[a].train();
+            output_layer[a].trainLayer();
         }
 
         double best = -1.0;
@@ -74,7 +74,7 @@ public class Network {
         }
 
         for (Neuron hidden_layer1 : hidden_layer) {
-            hidden_layer1.train();
+            hidden_layer1.trainLayer();
         } 
     }
     

@@ -20,10 +20,8 @@ public class Neuron {
     double[] layer_weights;
     double n_output;
     double error;
-    double[] sigmoid = new double[200];
 
     Neuron() {
-        this.setupSigmoid();
         error = 0.0;
     }
 
@@ -54,7 +52,6 @@ public class Neuron {
         }
         //System.out.println(inputSum);
         n_output = getSigmoid(inputSum);
-        //n_output = lookupSigmoid(inputSum);
         //System.out.println(n_output);
         error = 0.0;
     }
@@ -70,7 +67,7 @@ public class Neuron {
     /**
      * Trains neuron.
      */
-    void train() {
+    void trainLayer() {
         double delta = (1.0 - n_output) * (1.0 + n_output) * error * LR;
 
         for (int i = 0; i < layer_inputs.length; i++) {
@@ -78,31 +75,6 @@ public class Neuron {
             layer_weights[i] += layer_inputs[i].n_output * delta;
             //System.out.println(n_weights[i]); seems to be working
         }
-    }
-
-    /**
-     * Accesses value of the sigmoid function.
-     * @param x value desired for obtaining sigmoid(x).
-     */ 
-    double lookupSigmoid(double x) {
-        //System.out.println(x);
-        int idx = constrain((int) Math.floor((x + 5.0) * 20.0));
-        //System.out.println(idx);
-        double toReturn = sigmoid[idx];
-        //System.out.println(toReturn); everything here working
-        return toReturn;
-        }
-
-    /**
-     * Initializes g_sigmoid array with values of the sigmoid function for each index.
-     */
-    final void setupSigmoid() {
-        for (int i = 0; i < 200; i++) {
-            double x = (i / 20.0) - 5.0;
-            sigmoid[i] = 1.0 / (1.0 + Math.exp(-1.0 * x));
-            //System.out.println(i); ok
-            //System.out.println(sig[i]); works
-        }   
     }
     
     public double getSigmoid(double x) {
@@ -126,15 +98,6 @@ public class Neuron {
             System.out.println(n_input.getNeuronOutput());
         }
     }
-    
-    /**
-     * DOES NOT WORK
-     *     public void printWeights() {
-        for (int i = 0; i < this.n_weights.length; i++) {
-            System.out.println(this.n_weights[i]);
-        }
-    }
-     */
 
 }
 
