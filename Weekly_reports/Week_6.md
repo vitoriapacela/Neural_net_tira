@@ -11,9 +11,12 @@
 - My linear classifier has a lower error rate than the one in LeCun's paper. And I am very proud of it!
 
 ## Challenges
+I faced many challenges along the week, but I was able to sort them all out.
 
 ## Time track
 - On the weekend, debugging the code until it worked: 8h.
 - Tuesday (debugging until it's bug-free): 6.5h
+- Peer review: 2h.
 
 ## Goals for Week 7
+- Make more tests.
