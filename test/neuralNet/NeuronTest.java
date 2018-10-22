@@ -11,6 +11,7 @@
 
 package neuralNet;
 
+import java.io.IOException;
 import org.junit.Test;
 import org.junit.Assert;
 
@@ -75,6 +76,7 @@ public class NeuronTest {
         //System.nanoTime()
         Assert.assertFalse((neuron.error != 0.0));
     }
+
 
 /**
     NOT WORKING YET

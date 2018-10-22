@@ -21,23 +21,39 @@ public final class Program {
     int test_card = 0;
     int train_card = 0;
     
+    // data loading time in minutes
+    double dLMin;
+    // training time in minutes
+    double tMin;
+    // inference time on the test set in minutes
+    double iMin;
+    // error rate on the test set
+    double errorRate;
+    
     /**
      * Build neural network.
      */
-    void setup() {
-        nn = new Network(784, 300, 10);
+    void setup(int numberHidden) {
+        nn = new Network(784, numberHidden, 10);
     }
 
     /**
      * Read MNIST data and put it into train and test sets.
+     * @param numberHidden number of neurons in the hidden layer.
      * @throws IOException 
      */
-    public Program() throws IOException {
+    public Program(int numberHidden) throws IOException {
+        final long startTime = System.currentTimeMillis();
+        
         this.train_set = new MnistDataReader().readData("resources/train-images.idx3-ubyte", "resources/train-labels.idx1-ubyte");
         this.test_set = new MnistDataReader().readData("resources/t10k-images.idx3-ubyte", "resources/t10k-labels.idx1-ubyte");
-        //printMnistMatrix(train_set[0]);
-        //printMnistMatrix(test_set[0]);
-        setup();
+        
+        final long dataLoadTime = System.currentTimeMillis() - startTime;
+        System.out.println("Data Loading time (min):");
+        dLMin = ((double)dataLoadTime) / (1000.0 * 60.0);
+        System.out.println(dLMin);
+        
+        setup(numberHidden);
 
         // Train set
         for (int i = 0; i < 60000; i++) {
@@ -45,6 +61,11 @@ public final class Program {
             nn.respond(train_set[train_card]);
             nn.train(train_set[train_card].multiLabel);
           }
+        
+        final long trainTime = System.currentTimeMillis() - startTime;
+        tMin = ((double)trainTime) / (1000.0 * 60.0) - dLMin;
+        System.out.println("Training time (min):");
+        System.out.println(tMin);
 
         // Test set
         test_card = (int) Math.floor(Math.random() * test_set.length);
@@ -67,10 +88,15 @@ public final class Program {
                 errorSum++;
             } 
         }
-        double errorRate = errorSum / (double) test_iterations;
+        this.errorRate = errorSum / (double) test_iterations;
         
         System.out.println("error rate:");
         System.out.println(errorRate);
+        
+        final long inferTime = System.currentTimeMillis() - startTime;
+        iMin = ((double)inferTime) / (1000.0 * 60.0) - tMin - dLMin;
+        System.out.println("Test set inference time (s)");
+        System.out.println(iMin*60);
     }
     
 
