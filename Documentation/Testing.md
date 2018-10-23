@@ -5,6 +5,8 @@ The most important test to evaluate the performance of the neural network is the
 
 Using the default configuration, the neural network achieves an error rate of 0.06 on average, which is even less than the one described in the original paper by LeCun, which describes an error rate of 0.12.
 
+![](neurons_trainTime.png?raw=true)
+
 ## NeuronTest
 - Tests if the sigmoid function is set up correctly for the edge cases: 0, 6, and -6.
 
