@@ -55,7 +55,7 @@ public final class Program {
         
         setup(numberHidden);
 
-        // Train set
+        // Training set
         for (int i = 0; i < 60000; i++) {
             train_card = (int) Math.floor(Math.random() * train_set.length);
             nn.respond(train_set[train_card]);

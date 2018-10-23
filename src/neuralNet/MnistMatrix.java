@@ -2,6 +2,7 @@ package neuralNet;
 
 /**
  * Auxiliar data structure to hold in a matrix the MNIST data read with MnistDataReader.
+ * Adapted from https://github.com/turkdogan/mnist-data-reader
  * @author barimpac
  */
 

@@ -4,6 +4,7 @@ import java.io.*;
 
 /**
  * Read MNIST data from -ubyte files and set array of image matrixes.
+ * Adapted from https://github.com/turkdogan/mnist-data-reader
  * @author barimpac
  */
 public class MnistDataReader  {

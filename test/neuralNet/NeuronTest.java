@@ -6,15 +6,13 @@
 
 /**
  *
- * @author barimpac
+ * @author Vitória Barin Pacela
  */
 
 package neuralNet;
 
-import java.io.IOException;
 import org.junit.Test;
 import org.junit.Assert;
-
 
 public class NeuronTest {
     
@@ -73,26 +71,7 @@ public class NeuronTest {
     @Test
     public void neuronBuilt(){
         Neuron neuron = new Neuron();
-        //System.nanoTime()
         Assert.assertFalse((neuron.error != 0.0));
     }
-
-
-/**
-    NOT WORKING YET
-    @Test
-    public void testResponse() {
-        Neuron neuron = new Neuron();
-        neuron.respond();
-        Assert.assertEquals(0, neuron);
-//Assert.assertFalse((neuron.error == 0.0));
-    }
-    
-    public void testResponse2() {
-        Neuron neuron = new Neuron();
-        neuron.respond();
-        Assert.assertFalse((neuron.n_output < 0.0) || (neuron.n_output > 1.0));
-    }
-    */
-    
+       
 }
