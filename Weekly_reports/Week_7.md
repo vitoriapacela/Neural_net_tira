@@ -3,6 +3,7 @@
 - Preparing the demo was helpful to me, as explaining it also made me understand better what I developed and what lies behind the neural networks.
 - I implemented ProgramTest to test the training time and error rate under different numbers of neurons in the hidden layer.
 - I also made some plots to compare the time performance and the error rate according to the number of neurons in the hidden layer.
+- Improved the documentation for the Implementation and Testing documents.
 
 
 ## Challenges
@@ -13,4 +14,4 @@
 - Changing the structure of Program in order to accomodate time tracks: around 1h.
 - Implementing ProgramTest: 2h.
 - Making plots: 1h.
-- Documentation: 2h.
+- Documentation: 4h.

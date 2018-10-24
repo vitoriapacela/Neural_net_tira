@@ -16,4 +16,17 @@ Then an image from the test set is randomly sorted so that the neural network pr
 * The MnistDataReader class reads MNIST data from -ubyte files and sets array of image matrixes.
 
 ## Achieved run times
-Not available yet.
+The program runs in 2 minutes and 38 seconds in total, out of which 1.88 min was spent loading the dataset, 0.75 min training, and 0.39 s classifying the test set.
+Thus, the inference time is $0.39 x 10^{-3}$ s/image, and the training time is $7.5 x 10^{-4}$ s/image. The details of how the number of neurons in the hidden layer influence the training time are described in the Testing document.
+
+The training time and inference time agree with the time complexity of O(n^4) for forward propagation, and O(n^6) for back-propagation.
+
+## Future improvements
+There are no missing features on my implementation. A visualization of the neural network could be desired, but that falls out of the scope of this project. Furthermore, if it was possible to execute the code in a GPU, we could train the model per epochs and have multiple passes through the training set. In that case, a validation set would be needed to make sure that the model does not overfit.
+
+This program is lacking more tests, due to time limitations. However, the lack of tests does not harm the program's functionality, as explained also in the Testing document and in the Week 7 report.
+
+## References
+[Computational Complexity Of Neural Networks](https://kasperfred.com/posts/computational-complexity-of-neural-networks)
+
+
