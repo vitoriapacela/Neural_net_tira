@@ -15,3 +15,4 @@
 - Implementing ProgramTest: 2h.
 - Making plots: 1h.
 - Documentation: 4h.
+
