@@ -10,5 +10,3 @@ The main program initializes a neural network with 300 neurons in the hidden lay
 - [Testing](https://github.com/vitoriapacela/Neural_net_tira/blob/master/Documentation/Testing.md)
 - [Weekly reports](https://github.com/vitoriapacela/Neural_net_tira/tree/master/Weekly_reports)
 - [Demo slides](https://github.com/vitoriapacela/Neural_net_tira/blob/master/Documentation/Demo%20-%20Neural%20network.pdf)
-
-[![Build Status](https://travis-ci.org/vitoriapacela/Neural_net_tira.svg?branch=master)](https://travis-ci.org/vitoriapacela/Neural_net_tira)
